@@ -4,7 +4,8 @@
   "description": "software de treinamento em nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch"
   },
   "author": "johnvasc",
   "license": "ISC",
@@ -14,5 +15,8 @@
     "express": "^4.19.2",
     "pg": "^8.12.0",
     "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
   }
 }
