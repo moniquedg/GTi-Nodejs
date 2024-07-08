@@ -1,11 +1,5 @@
-const express = require('express');
-const router = require('./router');
-const bodyParser = require('body-parser');
+const app = require('./app');
 const database = require('./services/dbServices');
-const app = express();
-
-app.use(bodyParser.json());
-app.use('/', router);
 
 const PORT = process.env.PORT || 8080;
 

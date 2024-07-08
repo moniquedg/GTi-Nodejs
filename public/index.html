@@ -1,11 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Produtos e Compras</title>
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body>
+<body class="bg-gray-100">
+  <div class="container mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-5">Gestão de Produtos e Compras</h1>
     
+
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Adicionar Produto</h2>
+      <form id="produtoForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="nome">Nome</label>
+          <input id="nome" type="text" placeholder="Nome do produto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="descricao">Descrição</label>
+          <input id="descricao" type="text" placeholder="Descrição do produto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="preco">Preço</label>
+          <input id="preco" type="number" placeholder="Preço do produto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex items-center justify-between">
+          <button type="button" id="adicionarProduto" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Adicionar Produto</button>
+        </div>
+      </form>
+    </div>
+    
+
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Lista de Produtos</h2>
+      <ul id="listaProdutos" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"></ul>
+    </div>
+
+
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Adicionar Compra</h2>
+      <form id="compraForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="idComprador">ID do Comprador</label>
+          <input id="idComprador" type="text" placeholder="ID do Comprador" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="idVendedor">ID do Vendedor</label>
+          <input id="idVendedor" type="text" placeholder="ID do Vendedor" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="idProduto">ID do Produto</label>
+          <input id="idProduto" type="text" placeholder="ID do Produto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex items-center justify-between">
+          <button type="button" id="adicionarCompra" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Adicionar Compra</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Lista de Compras</h2>
+      <ul id="listaCompras" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"></ul>
+    </div>
+  </div>
+  <script src="./js/frontend.js"></script>
 </body>
 </html>
