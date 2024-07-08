@@ -6,11 +6,15 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use('/', router);
-app.listen('8080');
-console.log('the server is running on port 8080');
 
-database().then(()=>{
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`the server is running on port ${PORT}`);
+});
+
+database().then(() => {
     console.log('conectado ao banco!');
 }).catch(err => {
-    console.log(err);
-})
+    console.error('Erro ao conectar ao banco:', err);
+});
