@@ -1,9 +1,27 @@
-const mongoose = require('mongoose');
+const { Sequelize, DataTypes } = require('sequelize');
+const { sequelize } = require('../services/dbConnect');
 
-const produtoSchema = new mongoose.Schema({
-    nome: { type: String, required: true },
-    descricao: { type: String, required: true },
-    preco: { type: Number, required: true }
+const Produto = sequelize.define('Produto', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    descricao: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    preco: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    }
+}, {
+    tableName: 'produtos',
+    timestamps: false
 });
 
-module.exports = mongoose.model('Produto', produtoSchema);
+module.exports = Produto;

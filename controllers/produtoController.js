@@ -2,8 +2,7 @@ const Produto = require('../models/produto.model');
 
 exports.createProduto = async (req, res) => {
     try {
-        const produto = new Produto(req.body);
-        await produto.save();
+        const produto = await Produto.create(req.body);
         res.status(201).send(produto);
     } catch (error) {
         res.status(400).send(error);
@@ -12,7 +11,7 @@ exports.createProduto = async (req, res) => {
 
 exports.getProdutos = async (req, res) => {
     try {
-        const produtos = await Produto.find({});
+        const produtos = await Produto.findAll();
         res.send(produtos);
     } catch (error) {
         res.status(500).send(error);
@@ -21,7 +20,7 @@ exports.getProdutos = async (req, res) => {
 
 exports.getProduto = async (req, res) => {
     try {
-        const produto = await Produto.findById(req.params.id);
+        const produto = await Produto.findByPk(req.params.id);
         if (!produto) return res.status(404).send();
         res.send(produto);
     } catch (error) {
@@ -31,8 +30,9 @@ exports.getProduto = async (req, res) => {
 
 exports.updateProduto = async (req, res) => {
     try {
-        const produto = await Produto.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        const produto = await Produto.findByPk(req.params.id);
         if (!produto) return res.status(404).send();
+        await produto.update(req.body);
         res.send(produto);
     } catch (error) {
         res.status(400).send(error);
@@ -41,8 +41,9 @@ exports.updateProduto = async (req, res) => {
 
 exports.deleteProduto = async (req, res) => {
     try {
-        const produto = await Produto.findByIdAndDelete(req.params.id);
+        const produto = await Produto.findByPk(req.params.id);
         if (!produto) return res.status(404).send();
+        await produto.destroy();
         res.send(produto);
     } catch (error) {
         res.status(500).send(error);

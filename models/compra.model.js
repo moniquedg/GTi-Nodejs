@@ -1,9 +1,32 @@
-const mongoose = require('mongoose');
+const { Sequelize, DataTypes } = require('sequelize');
+const { sequelize } = require('../services/dbConnect');
+const Produto = require('./produto.model');
 
-const compraSchema = new mongoose.Schema({
-    idComprador: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
-    idVendedor: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
-    idProduto: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Produto' }
+const Compra = sequelize.define('Compra', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    idComprador: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    idVendedor: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    idProduto: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Produto,
+            key: 'id'
+        }
+    }
+}, {
+    tableName: 'compras',
+    timestamps: false
 });
 
-module.exports = mongoose.model('Compra', compraSchema);
+module.exports = Compra;

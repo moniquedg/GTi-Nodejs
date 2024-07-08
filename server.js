@@ -1,5 +1,5 @@
 const app = require('./app');
-const database = require('./services/dbServices');
+const { connectDB } = require('./services/dbConnect');
 
 const PORT = process.env.PORT || 8080;
 
@@ -7,7 +7,7 @@ app.listen(PORT, () => {
     console.log(`the server is running on port ${PORT}`);
 });
 
-database().then(() => {
+connectDB().then(() => {
     console.log('conectado ao banco!');
 }).catch(err => {
     console.error('Erro ao conectar ao banco:', err);

@@ -1,12 +1,17 @@
-const sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
-const db = new sequelize({
-    dialect: 'postgres',
+const sequelize = new Sequelize('database_name', 'username', 'password', {
     host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'KingLotus',
-    database: 'capacitacao'
-})
+    dialect: 'postgres' 
+});
 
-module.exports = db;
+const connectDB = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Conectado ao banco de dados!');
+    } catch (error) {
+        console.error('Erro ao conectar ao banco de dados:', error);
+    }
+};
+
+module.exports = { sequelize, connectDB };

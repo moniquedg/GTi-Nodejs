@@ -1,20 +1,28 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../services/dbConnect');
+const { sequelize } = require('../services/dbConnect');
 
-const user = sequelize.define('user', {
+const User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
-        unique: true,
+        autoIncrement: true,
         primaryKey: true
     },
-    username: {
+    nome: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    password: {
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    senha: {
         type: DataTypes.STRING,
         allowNull: false
     }
-})
+}, {
+    tableName: 'users',
+    timestamps: false
+});
 
-module.exports = user;
+module.exports = User;
