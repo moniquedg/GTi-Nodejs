@@ -35,4 +35,14 @@ router.get('/usuarios/:id/lucro', compraController.totalLucroUsuario);
 router.get('/produtos/:id/vendas', compraController.totalVendasProduto);
 router.get('/produtos/:id/lucro', compraController.totalLucroProduto);
 
+router.get('/test-connection', async (req, res) => {
+    try {
+        await sequelize.authenticate();
+        res.send('Conexão com o banco de dados foi bem-sucedida!');
+    } catch (error) {
+        res.status(500).send('Erro ao conectar ao banco de dados.');
+    }
+});
+
+
 module.exports = router;
