@@ -4,6 +4,7 @@ const mController = require('./controllers/messageController');
 const uController = require('./controllers/userController');
 const produtoController = require('./controllers/produtoController');
 const compraController = require('./controllers/compraController');
+const { sequelize } = require('./services/dbConnect'); 
 
 router.get('/', (req, res) => {
     console.log("o / foi acessado!");
@@ -40,9 +41,9 @@ router.get('/test-connection', async (req, res) => {
         await sequelize.authenticate();
         res.send('Conexão com o banco de dados foi bem-sucedida!');
     } catch (error) {
+        console.error('Erro ao conectar ao banco de dados:', error); 
         res.status(500).send('Erro ao conectar ao banco de dados.');
     }
 });
-
 
 module.exports = router;

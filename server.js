@@ -1,7 +1,7 @@
 const app = require('./app');
 const { sequelize, connectDB } = require('./services/dbConnect');
 
-const PORT = process.env.PORT || 3001; 
+const PORT = process.env.PORT || 3002; 
 
 app.listen(PORT, () => {
     console.log(`the server is running on port ${PORT}`);
